@@ -18,7 +18,7 @@ export class AppComponent implements OnInit{
     private signalR: SignalRService,
     private _http: HttpClient
   ){
-    signalR.start("https://localhost:7146/message-hub");
+    signalR.start("https://localhost:7132/message-hub");
   }
   ngOnInit(): void {
     this.signalR.on("messageMethod", message => {
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit{
   }
 
   sendMessage(){
-    this._http.get("https://localhost:7146/api/chats/SendMessage/" + this.message).subscribe(()=> {
+    this._http.get("https://localhost:7132/api/chats/SendMessage/" + this.message).subscribe(()=> {
       this.message = ""
     })
   }
